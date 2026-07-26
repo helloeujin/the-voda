@@ -1,5 +1,5 @@
 <script>
-  import { navigate } from './router.svelte.js'
+  import { navigate, routeUrl } from './router.svelte.js'
 
   let {
     instagramUrl = 'https://instagram.com/the__voda',
@@ -11,7 +11,7 @@
   <div class="inner">
     <span>© 2026 The VoDa. All rights reserved.</span>
     <div class="socials">
-      <a href="/#subscribe" aria-label="이메일 구독" onclick={(e) => { e.preventDefault(); navigate('/#subscribe') }}>
+      <a href={routeUrl('/#subscribe')} aria-label="이메일 구독" onclick={(e) => { e.preventDefault(); navigate('/#subscribe') }}>
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="4.5" width="20" height="15" rx="3" />
           <polyline points="3 6.5 12 13 21 6.5" />

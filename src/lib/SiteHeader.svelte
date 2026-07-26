@@ -1,5 +1,5 @@
 <script>
-  import { router, navigate } from './router.svelte.js'
+  import { router, navigate, routeUrl } from './router.svelte.js'
 
   const baseUrl = import.meta.env.BASE_URL
 
@@ -10,16 +10,16 @@
 </script>
 
 <header class="header">
-  <a href="/" class="logo" aria-label="The VoDa" onclick={(e) => go(e, '/')}>
+  <a href={routeUrl('/')} class="logo" aria-label="The VoDa" onclick={(e) => go(e, '/')}>
     <img src={`${baseUrl}assets/voda-logo.png`} alt="The VoDa" />
   </a>
   <nav class="nav">
     <a
-      href="/"
+      href={routeUrl('/')}
       aria-current={router.path === '/' ? 'page' : undefined}
       onclick={(e) => go(e, '/')}>About</a>
     <a
-      href="/talks"
+      href={routeUrl('/talks')}
       aria-current={router.path === '/talks' ? 'page' : undefined}
       onclick={(e) => go(e, '/talks')}>Talks</a>
   </nav>
