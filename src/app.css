@@ -1,0 +1,27 @@
+:root {
+  --ink: #111;
+  --muted: #666;
+  --faint: #888;
+  --body: #555;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111;
+  font-family: 'Noto Sans KR', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: oklch(80% 0.18 250 / 0.4);
+}
