@@ -4,6 +4,8 @@
   import MeetupList from './MeetupList.svelte'
   import { buildPastMeetups } from './data/pastMeetups.js'
 
+  const baseUrl = import.meta.env.BASE_URL
+
   // `pastMeetupCount` prop mirrors the original design's editor prop (default 12).
   let { pastMeetupCount = 12 } = $props()
 
@@ -19,7 +21,7 @@
     </h1>
     <img
       class="collage"
-      src="/assets/past-meetups-collage.png"
+      src={`${baseUrl}assets/past-meetups-collage.png`}
       alt="지난 밋업 현장"
     />
   </section>

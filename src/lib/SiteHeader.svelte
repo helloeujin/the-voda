@@ -1,6 +1,8 @@
 <script>
   import { router, navigate } from './router.svelte.js'
 
+  const baseUrl = import.meta.env.BASE_URL
+
   function go(e, to) {
     e.preventDefault()
     navigate(to)
@@ -9,7 +11,7 @@
 
 <header class="header">
   <a href="/" class="logo" aria-label="The VoDa" onclick={(e) => go(e, '/')}>
-    <img src="/assets/voda-logo.png" alt="The VoDa" />
+    <img src={`${baseUrl}assets/voda-logo.png`} alt="The VoDa" />
   </a>
   <nav class="nav">
     <a

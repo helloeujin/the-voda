@@ -2,6 +2,8 @@
   import SiteHeader from './SiteHeader.svelte'
   import SiteFooter from './SiteFooter.svelte'
 
+  const baseUrl = import.meta.env.BASE_URL
+
   // Editor props mirrored from the Claude Design `The VoDa.dc.html`.
   let {
     nextMeetupAnnounced = true,
@@ -45,7 +47,7 @@
       <div class="news-card">
         <div class="poster-col">
           <div class="poster">
-            <img src="/assets/poster-13.jpg" alt="밋업 포스터" />
+            <img src={`${baseUrl}assets/poster-13.jpg`} alt="밋업 포스터" />
           </div>
         </div>
 
