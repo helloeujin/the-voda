@@ -8,9 +8,10 @@ const basePath = baseUrl.replace(/\/$/, '')
 function routePath(pathname) {
   if (pathname === basePath || pathname === `${basePath}/`) return '/'
   if (basePath && pathname.startsWith(`${basePath}/`)) {
-    return pathname.slice(basePath.length)
+    const path = pathname.slice(basePath.length)
+    return path.length > 1 ? path.replace(/\/+$/, '') : path
   }
-  return pathname
+  return pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
 }
 
 export function routeUrl(to) {
