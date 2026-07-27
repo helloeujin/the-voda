@@ -168,12 +168,12 @@
     margin: 15px auto;
 
     @media (max-width: 780px) {
-      padding: 60px clamp(20px, 5vw, 64px) 52px;
+      padding: 52px clamp(20px, 5vw, 64px) 58px;
     }
   }
   h1 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(37px, 6.4vw, 68px);
+    font-size: clamp(36px, 6.4vw, 68px);
     font-weight: 500;
     /* line-height: 1.05; */
     line-height: 1.05;
