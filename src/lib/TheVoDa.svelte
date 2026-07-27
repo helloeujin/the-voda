@@ -164,10 +164,14 @@
     padding: 90px clamp(20px, 5vw, 64px);
     max-width: var(--content-max-width);
     margin: 15px auto;
+
+    @media (max-width: 780px) {
+      padding: 70px clamp(20px, 5vw, 64px) 60px;
+    }
   }
   h1 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(46px, 6.4vw, 68px);
+    font-size: clamp(40px, 6.4vw, 68px);
     font-weight: 500;
     line-height: 1.03;
     letter-spacing: -0.03em;
@@ -346,6 +350,7 @@
 
     max-width: var(--content-max-width);
     margin: 10px auto;
+    /* background-color: red; */
   }
   .subscribe-card {
     /* border: 1px solid #111;  */
@@ -356,6 +361,11 @@
     flex-wrap: wrap;
     gap: clamp(6px, 1.6vw, 8px);
     align-items: center;
+
+    @media (max-width: 780px) {
+      padding: 5px 0px;
+      margin-bottom: 40px;
+    }
   }
   .badge {
     width: 56px;
