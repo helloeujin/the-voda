@@ -257,6 +257,14 @@
     justify-content: center;
     color: #111;
   }
+  @media (max-width: 780px) {
+    .poster-col,
+    .news-body {
+      min-width: 0;
+      width: 100%;
+      max-width: none;
+    }
+  }
   .eyebrow {
     font-size: 13.5px;
     font-weight: 700;

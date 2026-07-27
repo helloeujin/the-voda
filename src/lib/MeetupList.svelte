@@ -23,7 +23,6 @@
         >
           <span class="label">{m.label}</span>
           <span class="title">{m.title}</span>
-          <span class="kind">{m.kind}</span>
           <span class="sign">{openIdx === m.idx ? "−" : "+"}</span>
         </button>
 
@@ -56,7 +55,7 @@
   }
   .row {
     display: grid;
-    grid-template-columns: 64px 1fr auto 28px;
+    grid-template-columns: 64px minmax(0, 1fr) 28px;
     gap: clamp(12px, 3vw, 32px);
     align-items: baseline;
     padding: 22px 0;
@@ -77,10 +76,10 @@
   .title {
     color: #111;
   }
-  .kind {
-    color: #666;
-    font-size: 15px;
-    text-align: right;
+  .title {
+    width: 80%;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .sign {
     font-size: 22px;
@@ -111,5 +110,15 @@
     margin: 0;
     font-size: 13px;
     color: #888;
+  }
+  @media (max-width: 780px) {
+    .row {
+      grid-template-columns: 44px minmax(0, 1fr) 24px;
+      gap: 8px;
+    }
+    .detail {
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 8px;
+    }
   }
 </style>
