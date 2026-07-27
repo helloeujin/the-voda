@@ -106,16 +106,18 @@
   <!-- Subscribe -->
   <section id="subscribe" class="subscribe">
     <div class="subscribe-card">
-      <div
-        class="badge"
-        class:rotate={isBadgeVisible}
-        bind:this={badgeElement}
-        aria-hidden="true"
-      >
-        <span class="badge-icon">✷</span>
-      </div>
       <div class="subscribe-title">
-        <h2>밋업 소식 받아보기</h2>
+        <h2>
+          <span
+            class="badge"
+            class:rotate={isBadgeVisible}
+            bind:this={badgeElement}
+            aria-hidden="true"
+          >
+            <span class="badge-icon">✷</span>
+          </span>
+          밋업 소식 받아보기
+        </h2>
       </div>
       <form onsubmit={handleSubscribe}>
         <input
@@ -166,12 +168,12 @@
     margin: 15px auto;
 
     @media (max-width: 780px) {
-      padding: 70px clamp(20px, 5vw, 64px) 60px;
+      padding: 60px clamp(20px, 5vw, 64px) 52px;
     }
   }
   h1 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(38px, 6.4vw, 68px);
+    font-size: clamp(37px, 6.4vw, 68px);
     font-weight: 500;
     /* line-height: 1.05; */
     line-height: 1.05;
@@ -373,8 +375,8 @@
     }
   }
   .badge {
-    width: 56px;
-    height: 56px;
+    width: 1em;
+    height: 1em;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -417,11 +419,14 @@
   }
   .subscribe-title h2 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(24px, 2.8vw, 30px);
+    font-size: clamp(21px, 2.8vw, 28px);
     font-weight: 500;
     margin: 0;
     letter-spacing: -0.02em;
     line-height: 1.15;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   form {
     flex: 1 1 340px;

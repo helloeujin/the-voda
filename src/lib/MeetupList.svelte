@@ -59,7 +59,7 @@
     grid-template-columns: 64px 1fr auto 28px;
     gap: clamp(12px, 3vw, 32px);
     align-items: baseline;
-    padding: 20px 0;
+    padding: 22px 0;
     width: 100%;
     background: none;
     border: 0;
@@ -67,7 +67,7 @@
     text-align: left;
     cursor: pointer;
     color: #111;
-    font-size: clamp(16px, 1.7vw, 18px);
+    font-size: clamp(16px, 1.7vw, 17px);
     transition: opacity 0.15s ease;
   }
   .row:hover {

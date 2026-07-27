@@ -19,8 +19,10 @@
     <h1>
       <!-- <span class="dot">●</span> -->
       <span class="grey"> 2022년 여름 시작되어 </span>
-      <span class="spin">✷</span> 뉴욕타임즈 그래픽 에디터부터 미디어 아티스트, 지도
-      제작자까지 다양한 연사들이 함께했습니다.
+      <span class="speaker-line">
+        <span class="spin s1">✷</span> 뉴욕타임즈 그래픽 에디터부터 미디어 아티스트,
+        지도 제작자까지 다양한 연사들이 함께했습니다.
+      </span>
     </h1>
     <img
       class="collage"
@@ -42,7 +44,7 @@
     overflow-x: hidden;
   }
   .hero {
-    padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 64px)
+    padding: clamp(22px, 4vw, 48px) clamp(20px, 5vw, 64px)
       clamp(24px, 4vw, 40px);
     /* max-width: 1400px; */
     max-width: var(--content-max-width);
@@ -56,6 +58,26 @@
     font-size: 0.5em;
     vertical-align: 0.12em;
   }
+  .spin {
+    display: inline-block;
+    animation: voda-spin-3 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .s1 {
+    animation-delay: 0.3s;
+  }
+  @keyframes voda-spin-3 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (max-width: 780px) {
+    .speaker-line {
+      display: block;
+    }
+  }
   h1 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
     font-size: clamp(28px, 3.8vw, 43px);
@@ -64,8 +86,12 @@
     letter-spacing: -0.03em;
     margin: 0;
     max-width: 780px;
-    padding: 48px 0px 76px;
+    padding: 46px 0px 68px;
     /* text-wrap: balance; */
+
+    /* @media (max-width: 780px) {
+      line-height: 1.25;
+    } */
   }
   .collage {
     display: block;
