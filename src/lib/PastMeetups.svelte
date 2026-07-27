@@ -1,15 +1,15 @@
 <script>
-  import SiteHeader from './SiteHeader.svelte'
-  import SiteFooter from './SiteFooter.svelte'
-  import MeetupList from './MeetupList.svelte'
-  import { buildPastMeetups } from './data/pastMeetups.js'
+  import SiteHeader from "./SiteHeader.svelte";
+  import SiteFooter from "./SiteFooter.svelte";
+  import MeetupList from "./MeetupList.svelte";
+  import { buildPastMeetups } from "./data/pastMeetups.js";
 
-  const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = import.meta.env.BASE_URL;
 
   // `pastMeetupCount` prop mirrors the original design's editor prop (default 12).
-  let { pastMeetupCount = 12 } = $props()
+  let { pastMeetupCount = 12 } = $props();
 
-  const meetups = $derived(buildPastMeetups(pastMeetupCount))
+  const meetups = $derived(buildPastMeetups(pastMeetupCount));
 </script>
 
 <div class="page">
@@ -17,7 +17,10 @@
 
   <section class="hero">
     <h1>
-      ‘더보다(The VoDa)'는 2022년 여름부터 진행되었어요. 지금까지의 밋업을 만나보세요!
+      <!-- <span class="dot">●</span> -->
+      <span class="grey"> 2022년 여름 시작되어 </span>
+      <span class="spin">✷</span> 뉴욕타임즈 그래픽 에디터부터 미디어 아티스트, 지도
+      제작자까지 다양한 연사들이 함께했습니다.
     </h1>
     <img
       class="collage"
@@ -39,19 +42,30 @@
     overflow-x: hidden;
   }
   .hero {
-    padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 64px) clamp(24px, 4vw, 40px);
-    max-width: 1400px;
+    padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 64px)
+      clamp(24px, 4vw, 40px);
+    /* max-width: 1400px; */
+    max-width: var(--content-max-width);
     margin: 0 auto;
   }
+  .grey {
+    color: #b8b8b8;
+  }
+  .dot {
+    display: inline-block;
+    font-size: 0.5em;
+    vertical-align: 0.12em;
+  }
   h1 {
-    font-family: 'Archivo', 'Noto Sans KR', sans-serif;
-    font-size: clamp(26px, 3.8vw, 42px);
+    font-family: "Archivo", "Noto Sans KR", sans-serif;
+    font-size: clamp(28px, 3.8vw, 43px);
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: -0.03em;
     margin: 0;
-    max-width: 820px;
-    padding: 40px 0;
+    max-width: 780px;
+    padding: 48px 0px 76px;
+    /* text-wrap: balance; */
   }
   .collage {
     display: block;

@@ -1,11 +1,13 @@
 <script>
-  let { meetups } = $props()
+  import { slide } from "svelte/transition";
+
+  let { meetups } = $props();
 
   // Matches the original: a single row open at a time (state.open).
-  let openIdx = $state(null)
+  let openIdx = $state(null);
 
   function toggle(idx) {
-    openIdx = openIdx === idx ? null : idx
+    openIdx = openIdx === idx ? null : idx;
   }
 </script>
 
@@ -22,11 +24,11 @@
           <span class="label">{m.label}</span>
           <span class="title">{m.title}</span>
           <span class="kind">{m.kind}</span>
-          <span class="sign">{openIdx === m.idx ? '−' : '+'}</span>
+          <span class="sign">{openIdx === m.idx ? "−" : "+"}</span>
         </button>
 
         {#if openIdx === m.idx}
-          <div class="detail">
+          <div class="detail" transition:slide={{ duration: 280 }}>
             <div></div>
             <div class="detail-body">
               <p class="summary">{m.summary}</p>
@@ -45,7 +47,7 @@
     padding: 60px clamp(20px, 5vw, 64px) clamp(64px, 9vw, 110px);
   }
   .list {
-    max-width: 780px;
+    max-width: 720px;
     margin: 0 auto;
     border-top: 1px solid #111;
   }
@@ -65,7 +67,7 @@
     text-align: left;
     cursor: pointer;
     color: #111;
-    font-size: clamp(16px, 1.7vw, 20px);
+    font-size: clamp(16px, 1.7vw, 18px);
     transition: opacity 0.15s ease;
   }
   .row:hover {

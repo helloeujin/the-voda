@@ -3,6 +3,7 @@
   --muted: #666;
   --faint: #888;
   --body: #555;
+  --content-max-width: 1120px;
 }
 
 * {
