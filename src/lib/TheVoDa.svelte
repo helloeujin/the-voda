@@ -171,12 +171,17 @@
   }
   h1 {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(40px, 6.4vw, 68px);
+    font-size: clamp(38px, 6.4vw, 68px);
     font-weight: 500;
-    line-height: 1.03;
+    /* line-height: 1.05; */
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin: 0;
     /* text-wrap: balance; */
+
+    @media (max-width: 780px) {
+      line-height: 1.1;
+    }
   }
   .ink {
     color: #111;
