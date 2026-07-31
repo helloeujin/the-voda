@@ -18,8 +18,6 @@
 
   const instagramUrl = $derived(`https://instagram.com/${instagramHandle}`);
 
-  let email = $state("");
-  let subscribed = $state(false);
   let badgeElement;
   let isBadgeVisible = $state(false);
 
@@ -35,11 +33,6 @@
 
     return () => observer.disconnect();
   });
-
-  function handleSubscribe(e) {
-    e.preventDefault();
-    subscribed = true;
-  }
 </script>
 
 <div class="page">
@@ -116,37 +109,18 @@
           >
             <span class="badge-icon">✷</span>
           </span>
-          밋업 소식 받아보기
+          데이터 시각화 밋업 소식 받아보기
         </h2>
       </div>
-      <form onsubmit={handleSubscribe}>
-        <input
-          type="email"
-          required
-          placeholder="Your email"
-          bind:value={email}
-        />
-        <button type="submit" aria-label="구독하기">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="4" y1="12" x2="19" y2="12" />
-            <polyline points="13 6 19 12 13 18" />
-          </svg>
-        </button>
-      </form>
-      {#if subscribed}
-        <div class="subscribe-note">
-          ✓ 구독 신청 화면이에요 (실제 발송은 서비스 연동 후 적용돼요)
-        </div>
-      {/if}
+      <a
+        class="subscribe-button"
+        href="https://page.stibee.com/subscriptions/508142"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        무료로 구독하기
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
@@ -436,49 +410,30 @@
     align-items: center;
     gap: 8px;
   }
-  form {
-    flex: 1 1 340px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    border-bottom: 1px solid #bbb;
-    padding-bottom: 10px;
-  }
-  input {
-    flex: 1;
-    min-width: 0;
-    padding: 6px 0;
-    border: none;
-    font-size: clamp(19px, 2.2vw, 25px);
-    color: #111;
-    background: transparent;
-    outline: none;
-  }
-  form button {
-    flex-shrink: 0;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
+  .subscribe-button {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    gap: 12px;
+    padding: 15px 24px;
+    border: 1.5px solid #111;
+    border-radius: 100px;
+    font-size: 17px;
+    font-weight: 600;
     color: #111;
+    background: transparent;
+    cursor: pointer;
     transition:
       background 0.15s ease,
       color 0.15s ease;
   }
-  form button:hover {
+  .subscribe-button:hover {
     background: #111;
     color: #fff;
   }
-  .subscribe-note {
-    width: 100%;
-    font-size: 14px;
-    color: #555;
-    font-weight: 600;
-    text-align: center;
+  .subscribe-button span {
+    font-size: 20px;
+    line-height: 1;
   }
 </style>
