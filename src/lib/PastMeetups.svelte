@@ -104,9 +104,9 @@
     padding: 46px 0px 68px;
     /* text-wrap: balance; */
 
-    /* @media (max-width: 780px) {
-      line-height: 1.25;
-    } */
+    @media (max-width: 780px) {
+      line-height: 1.3;
+    }
   }
   .collage {
     display: block;

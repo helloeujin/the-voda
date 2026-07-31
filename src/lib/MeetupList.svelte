@@ -74,8 +74,8 @@
                   class="detail-link"
                   href={m.link}
                   target="_blank"
-                  rel="noopener noreferrer"
-                >자세히 보기 →</a>
+                  rel="noopener noreferrer">자세히 보기 →</a
+                >
               {/if}
             </div>
           </div>
@@ -194,6 +194,7 @@
     border-bottom: 1px solid currentColor;
     font-size: 13px;
     font-weight: 600;
+    margin-bottom: 10px;
   }
   .detail-link:hover {
     opacity: 0.6;

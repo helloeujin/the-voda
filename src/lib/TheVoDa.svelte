@@ -83,16 +83,14 @@
             <div class="k">장소</div>
             <div>{nextMeetup.location}</div>
           </div>
-          {#if nextMeetup.link}
-            <a
-              class="register"
-              href={nextMeetup.link}
-              target="_blank"
-              rel="noopener"
-            >
-              신청하기 →
-            </a>
-          {/if}
+          <a
+            class="register"
+            href={nextMeetup.link || "#"}
+            target="_blank"
+            rel="noopener"
+          >
+            신청하기 →
+          </a>
         </div>
       </div>
     {:else}
@@ -125,7 +123,7 @@
           >
             <span class="badge-icon">✷</span>
           </span>
-          데이터 시각화 밋업 소식 받아보기
+          새로운 밋업 소식을 받아보세요!
         </h2>
       </div>
       <a
@@ -153,12 +151,12 @@
 
   /* HERO */
   .hero {
-    padding: 90px clamp(20px, 5vw, 64px);
+    padding: 88px clamp(20px, 5vw, 64px) 80px;
     max-width: var(--content-max-width);
     margin: 15px auto;
 
     @media (max-width: 780px) {
-      padding: 52px clamp(20px, 5vw, 64px) 58px;
+      padding: 52px clamp(20px, 5vw, 64px) 52px;
     }
   }
   h1 {
@@ -166,13 +164,13 @@
     font-size: clamp(36px, 6.4vw, 68px);
     font-weight: 500;
     /* line-height: 1.05; */
-    line-height: 1.05;
+    line-height: 1.06;
     letter-spacing: -0.03em;
     margin: 0;
     /* text-wrap: balance; */
 
     @media (max-width: 780px) {
-      line-height: 1.1;
+      line-height: 1.12;
     }
   }
   .ink {
@@ -213,9 +211,9 @@
     margin: 10px auto;
   }
   .news-card {
-    border: 1px solid #111;
+    /* border: 1px solid #111; */
     border-radius: 20px;
-    padding: clamp(20px, 3vw, 32px);
+    padding: clamp(28px, 3vw, 32px);
     display: flex;
     flex-wrap: wrap;
     gap: clamp(24px, 4vw, 48px);
@@ -263,11 +261,11 @@
   }
   .news-topic {
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(28px, 3.6vw, 38px);
+    font-size: clamp(27px, 3.6vw, 37px);
     font-weight: 500;
     line-height: 1.25;
     letter-spacing: -0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 18px;
   }
   .news-meta {
     display: grid;
@@ -275,7 +273,7 @@
     gap: 12px 20px;
     font-size: 15.5px;
     font-weight: 500;
-    padding-top: 20px;
+    padding-top: 24px;
     border-top: 1px solid #111;
   }
   .news-meta .k {
@@ -284,6 +282,7 @@
   .register {
     align-self: flex-start;
     margin-top: 32px;
+    margin-bottom: 10px;
     padding: 14px 28px;
     border-radius: 100px;
     border: 1.5px solid #111;
@@ -292,6 +291,10 @@
     font-weight: 600;
     font-size: 17px;
     transition: background 0.15s ease;
+
+    @media (max-width: 780px) {
+      font-size: 16px;
+    }
   }
   .register:hover {
     background: #111;
@@ -345,6 +348,10 @@
 
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: 780px) {
+      line-height: 1.4;
+    }
   }
 
   /* Subscribe */
@@ -443,6 +450,10 @@
     transition:
       background 0.15s ease,
       color 0.15s ease;
+
+    @media (max-width: 780px) {
+      font-size: 16px;
+    }
   }
   .subscribe-button:hover {
     background: #111;
