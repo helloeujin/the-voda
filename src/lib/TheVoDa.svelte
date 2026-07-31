@@ -2,17 +2,19 @@
   import { onMount } from "svelte";
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
+  import { upcomingMeetup } from "./data/pastMeetups.js";
 
   const baseUrl = import.meta.env.BASE_URL;
 
   // Editor props mirrored from the Claude Design `The VoDa.dc.html`.
   let {
-    nextMeetupAnnounced = true,
-    nextMeetupTopic = "데이터로 설득하기: 시각화의 힘",
-    nextMeetupSpeaker = "이수민, 김지연",
-    nextMeetupDate = "2026.08.20 (목) 19:00",
-    nextMeetupPlace = "서울, 장소 추후 공지",
-    registerUrl = "#",
+    nextMeetupAnnounced = upcomingMeetup.type === "upcoming",
+    nextMeetupTopic = upcomingMeetup.subject,
+    nextMeetupSpeaker = upcomingMeetup.speakers.join(", "),
+    nextMeetupDate = upcomingMeetup.date,
+    nextMeetupPlace = upcomingMeetup.location,
+    nextMeetupImg = upcomingMeetup.img,
+    registerUrl = upcomingMeetup.link,
     instagramHandle = "the__voda",
   } = $props();
 
@@ -59,7 +61,7 @@
       <div class="news-card">
         <div class="poster-col">
           <div class="poster">
-            <img src={`${baseUrl}assets/poster-13.jpg`} alt="밋업 포스터" />
+            <img src={`${baseUrl}assets/${nextMeetupImg}`} alt="밋업 포스터" />
           </div>
         </div>
 
@@ -74,9 +76,11 @@
             <div class="k">장소</div>
             <div>{nextMeetupPlace}</div>
           </div>
-          <a class="register" href={registerUrl} target="_blank" rel="noopener">
-            신청하기 →
-          </a>
+          {#if registerUrl}
+            <a class="register" href={registerUrl} target="_blank" rel="noopener">
+              신청하기 →
+            </a>
+          {/if}
         </div>
       </div>
     {:else}

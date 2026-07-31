@@ -30,8 +30,31 @@
           <div class="detail" transition:slide={{ duration: 280 }}>
             <div></div>
             <div class="detail-body">
-              <p class="summary">{m.summary}</p>
-              <p class="date">{m.date}</p>
+              <div class="meta">
+                <span>{m.date}</span>
+                <span>{m.type === "online" ? "온라인" : "오프라인"}</span>
+              </div>
+              {#each m.sessions as session}
+                <div class="session">
+                  <p class="speaker">
+                    {session.speaker}
+                    {#if session.title}
+                      <span>{session.title}</span>
+                    {/if}
+                  </p>
+                  {#if session.content}
+                    <p class="summary">{session.content}</p>
+                  {/if}
+                </div>
+              {/each}
+              {#if m.link}
+                <a
+                  class="detail-link"
+                  href={m.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >자세히 보기 →</a>
+              {/if}
             </div>
           </div>
         {/if}
@@ -96,8 +119,34 @@
   .detail-body {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
     max-width: 600px;
+  }
+  .meta {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #888;
+  }
+  .meta span + span::before {
+    content: "·";
+    margin-right: 10px;
+  }
+  .session {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .speaker {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .speaker span {
+    margin-left: 7px;
+    color: #777;
+    font-size: 13px;
+    font-weight: 400;
   }
   .summary {
     margin: 0;
@@ -106,10 +155,15 @@
     color: #555;
     text-wrap: pretty;
   }
-  .date {
-    margin: 0;
-    font-size: 13px;
-    color: #888;
+  .detail-link {
+    align-self: flex-start;
+    padding-bottom: 2px;
+    border-bottom: 1px solid currentColor;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .detail-link:hover {
+    opacity: 0.6;
   }
   @media (max-width: 780px) {
     .row {
