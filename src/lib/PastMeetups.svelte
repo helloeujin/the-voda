@@ -1,15 +1,30 @@
 <script>
+  import { onMount } from "svelte";
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
   import MeetupList from "./MeetupList.svelte";
   import { buildPastMeetups } from "./data/pastMeetups.js";
+  import { fetchMeetupData } from "./data/googleSheet.js";
 
   const baseUrl = import.meta.env.BASE_URL;
 
-  // `pastMeetupCount` prop mirrors the original design's editor prop (default 12).
-  let { pastMeetupCount = 12 } = $props();
+  let meetups = $state(buildPastMeetups());
 
-  const meetups = $derived(buildPastMeetups(pastMeetupCount));
+  onMount(() => {
+    async function refreshMeetups() {
+      try {
+        const { past } = await fetchMeetupData();
+        if (past.length) meetups = past;
+      } catch (error) {
+        console.warn("Google Sheet의 지난 밋업을 불러오지 못했습니다.", error);
+      }
+    }
+
+    refreshMeetups();
+    const refreshTimer = window.setInterval(refreshMeetups, 5 * 60 * 1000);
+
+    return () => window.clearInterval(refreshTimer);
+  });
 </script>
 
 <div class="page">

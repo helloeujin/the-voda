@@ -5,7 +5,7 @@
 </script>
 
 {#if router.path === '/talks'}
-  <PastMeetups pastMeetupCount={12} />
+  <PastMeetups />
 {:else}
   <TheVoDa />
 {/if}

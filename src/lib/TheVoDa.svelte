@@ -3,23 +3,15 @@
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
   import { upcomingMeetup } from "./data/pastMeetups.js";
+  import { fetchMeetupData } from "./data/googleSheet.js";
 
   const baseUrl = import.meta.env.BASE_URL;
 
-  // Editor props mirrored from the Claude Design `The VoDa.dc.html`.
-  let {
-    nextMeetupAnnounced = upcomingMeetup.type === "upcoming",
-    nextMeetupTopic = upcomingMeetup.subject,
-    nextMeetupSpeaker = upcomingMeetup.speakers.join(", "),
-    nextMeetupDate = upcomingMeetup.date,
-    nextMeetupPlace = upcomingMeetup.location,
-    nextMeetupImg = upcomingMeetup.img,
-    registerUrl = upcomingMeetup.link,
-    instagramHandle = "the__voda",
-  } = $props();
+  let { instagramHandle = "the__voda" } = $props();
 
   const instagramUrl = $derived(`https://instagram.com/${instagramHandle}`);
 
+  let nextMeetup = $state(upcomingMeetup);
   let badgeElement;
   let isBadgeVisible = $state(false);
 
@@ -33,7 +25,22 @@
 
     observer.observe(badgeElement);
 
-    return () => observer.disconnect();
+    async function refreshMeetup() {
+      try {
+        const { upcoming } = await fetchMeetupData();
+        if (upcoming) nextMeetup = upcoming;
+      } catch (error) {
+        console.warn("Google Sheet의 밋업 정보를 불러오지 못했습니다.", error);
+      }
+    }
+
+    refreshMeetup();
+    const refreshTimer = window.setInterval(refreshMeetup, 5 * 60 * 1000);
+
+    return () => {
+      observer.disconnect();
+      window.clearInterval(refreshTimer);
+    };
   });
 </script>
 
@@ -57,27 +64,32 @@
 
   <!-- 밋업 소식 -->
   <section id="news" class="news">
-    {#if nextMeetupAnnounced}
+    {#if nextMeetup?.type === "upcoming"}
       <div class="news-card">
         <div class="poster-col">
           <div class="poster">
-            <img src={`${baseUrl}assets/${nextMeetupImg}`} alt="밋업 포스터" />
+            <img src={`${baseUrl}assets/${nextMeetup.img}`} alt="밋업 포스터" />
           </div>
         </div>
 
         <div class="news-body">
-          <div class="eyebrow">13번째 The VoDa</div>
-          <div class="news-topic">{nextMeetupTopic}</div>
+          <div class="eyebrow">{nextMeetup.meetup}번째 The VoDa</div>
+          <div class="news-topic">{nextMeetup.subject}</div>
           <div class="news-meta">
             <div class="k">강연자</div>
-            <div>{nextMeetupSpeaker}</div>
+            <div>{nextMeetup.speakers.join(", ")}</div>
             <div class="k">일시</div>
-            <div>{nextMeetupDate}</div>
+            <div>{nextMeetup.date}</div>
             <div class="k">장소</div>
-            <div>{nextMeetupPlace}</div>
+            <div>{nextMeetup.location}</div>
           </div>
-          {#if registerUrl}
-            <a class="register" href={registerUrl} target="_blank" rel="noopener">
+          {#if nextMeetup.link}
+            <a
+              class="register"
+              href={nextMeetup.link}
+              target="_blank"
+              rel="noopener"
+            >
               신청하기 →
             </a>
           {/if}
