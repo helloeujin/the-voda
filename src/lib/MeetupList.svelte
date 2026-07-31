@@ -9,6 +9,19 @@
   function toggle(idx) {
     openIdx = openIdx === idx ? null : idx;
   }
+
+  function bulletItems(content) {
+    const lines = content
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (lines.length < 2 || !lines.every((line) => line.startsWith("- "))) {
+      return null;
+    }
+
+    return lines.map((line) => line.slice(2).trim());
+  }
 </script>
 
 <div class="wrap">
@@ -43,7 +56,16 @@
                     {/if}
                   </p>
                   {#if session.content}
-                    <p class="summary">{session.content}</p>
+                    {@const items = bulletItems(session.content)}
+                    {#if items}
+                      <ul class="summary-list">
+                        {#each items as item}
+                          <li>{item}</li>
+                        {/each}
+                      </ul>
+                    {:else}
+                      <p class="summary">{session.content}</p>
+                    {/if}
                   {/if}
                 </div>
               {/each}
@@ -103,6 +125,7 @@
     width: 80%;
     min-width: 0;
     overflow-wrap: anywhere;
+    font-size: clamp(17px, calc(1.7vw + 1px), 18px);
   }
   .sign {
     font-size: 22px;
@@ -155,11 +178,21 @@
     color: #555;
     text-wrap: pretty;
   }
+  .summary-list {
+    margin: 0;
+    padding-left: 1.25em;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .summary-list li + li {
+    margin-top: 7px;
+  }
   .detail-link {
     align-self: flex-start;
     padding-bottom: 2px;
     border-bottom: 1px solid currentColor;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
   }
   .detail-link:hover {
