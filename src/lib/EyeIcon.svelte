@@ -34,49 +34,49 @@
       transform: translateY(0);
     }
     6.25% {
-      transform: translateY(-1.53px);
+      transform: translateY(-2.3px);
     }
     12.5% {
-      transform: translateY(-2.83px);
+      transform: translateY(-4.24px);
     }
     18.75% {
-      transform: translateY(-3.7px);
+      transform: translateY(-5.54px);
     }
     25% {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
     }
     31.25% {
-      transform: translateY(-3.7px);
+      transform: translateY(-5.54px);
     }
     37.5% {
-      transform: translateY(-2.83px);
+      transform: translateY(-4.24px);
     }
     43.75% {
-      transform: translateY(-1.53px);
+      transform: translateY(-2.3px);
     }
     50% {
       transform: translateY(0);
     }
     56.25% {
-      transform: translateY(1.53px);
+      transform: translateY(2.3px);
     }
     62.5% {
-      transform: translateY(2.83px);
+      transform: translateY(4.24px);
     }
     68.75% {
-      transform: translateY(3.7px);
+      transform: translateY(5.54px);
     }
     75% {
-      transform: translateY(4px);
+      transform: translateY(6px);
     }
     81.25% {
-      transform: translateY(3.7px);
+      transform: translateY(5.54px);
     }
     87.5% {
-      transform: translateY(2.83px);
+      transform: translateY(4.24px);
     }
     93.75% {
-      transform: translateY(1.53px);
+      transform: translateY(2.3px);
     }
   }
 
