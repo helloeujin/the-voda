@@ -1,5 +1,6 @@
 // Minimal client-side router (Svelte 5 runes).
-// `/`      → About / main page (The VoDa)
+// `/`      → Main page (The VoDa)
+// `/about` → About / organizers
 // `/talks` → Past Meetups
 
 const baseUrl = import.meta.env.BASE_URL

@@ -26,7 +26,7 @@ function staticSpaRoutes(routes) {
 }
 
 export default defineConfig({
-  plugins: [svelte(), staticSpaRoutes(["talks"])],
+  plugins: [svelte(), staticSpaRoutes(["talks", "about"])],
 
   base: "/the-voda/",
 });

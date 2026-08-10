@@ -20,9 +20,9 @@
   </a>
   <nav class="nav">
     <a
-      href={routeUrl("/")}
-      aria-current={router.path === "/" ? "page" : undefined}
-      onclick={(e) => go(e, "/")}>About</a
+      href={routeUrl("/about")}
+      aria-current={router.path === "/about" ? "page" : undefined}
+      onclick={(e) => go(e, "/about")}>About</a
     >
     <a
       href={routeUrl("/talks")}

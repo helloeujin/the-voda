@@ -1,6 +1,4 @@
 <script>
-  import { navigate, routeUrl } from "./router.svelte.js";
-
   let { instagramUrl = "https://instagram.com/the__voda", discordUrl = "#" } =
     $props();
 </script>
@@ -10,12 +8,10 @@
     <span>© 2026 The VoDa. All rights reserved.</span>
     <div class="socials">
       <a
-        href={routeUrl("/#subscribe")}
-        aria-label="이메일 구독"
-        onclick={(e) => {
-          e.preventDefault();
-          navigate("/#subscribe");
-        }}
+        href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=the.voda.2022%40gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="The VoDa에 이메일 보내기"
       >
         <svg
           width="30"

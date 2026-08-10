@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
+  import EyeIcon from "./EyeIcon.svelte";
   import MeetupList from "./MeetupList.svelte";
   import { buildPastMeetups } from "./data/pastMeetups.js";
   import { fetchMeetupData } from "./data/googleSheet.js";
@@ -35,7 +36,7 @@
       <!-- <span class="dot">●</span> -->
       <span class="grey"> 2022년 여름 시작되어 </span>
       <span class="speaker-line">
-        <span class="spin s1">✷</span> 뉴욕타임즈 그래픽 에디터부터 미디어 아티스트,
+        <EyeIcon /> 뉴욕타임즈 그래픽 에디터부터 미디어 아티스트,
         지도 제작자까지 다양한 연사들이 함께했습니다.
       </span>
     </h1>
@@ -72,21 +73,6 @@
     display: inline-block;
     font-size: 0.5em;
     vertical-align: 0.12em;
-  }
-  .spin {
-    display: inline-block;
-    animation: voda-spin-3 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
-  }
-  .s1 {
-    animation-delay: 0.3s;
-  }
-  @keyframes voda-spin-3 {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }
   @media (max-width: 780px) {
     .speaker-line {

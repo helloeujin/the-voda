@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
+  import EyeIcon from "./EyeIcon.svelte";
   import { upcomingMeetup } from "./data/pastMeetups.js";
   import { fetchMeetupData } from "./data/googleSheet.js";
 
@@ -12,19 +13,11 @@
   const instagramUrl = $derived(`https://instagram.com/${instagramHandle}`);
 
   let nextMeetup = $state(upcomingMeetup);
-  let badgeElement;
-  let isBadgeVisible = $state(false);
+  const posterImage = $derived(
+    nextMeetup?.img === "poster-13.jpg" ? "poster-13.webp" : nextMeetup?.img,
+  );
 
   onMount(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isBadgeVisible = entry.intersectionRatio === 1;
-      },
-      { threshold: 1 },
-    );
-
-    observer.observe(badgeElement);
-
     async function refreshMeetup() {
       try {
         const { upcoming } = await fetchMeetupData();
@@ -38,7 +31,6 @@
     const refreshTimer = window.setInterval(refreshMeetup, 5 * 60 * 1000);
 
     return () => {
-      observer.disconnect();
       window.clearInterval(refreshTimer);
     };
   });
@@ -51,7 +43,7 @@
   <section class="hero">
     <h1>
       <span class="ink">데이터</span>
-      <span class="ink"> 시각화 <span class="spin s1">✷</span> 밋업</span><br />
+      <span class="ink"> 시각화 <EyeIcon /> 밋업</span><br />
       <span class="grey"
         ><span class="spin s2">✦</span>
         <!-- 분석가 개발자 디자이너 누구나 -->
@@ -68,7 +60,13 @@
       <div class="news-card">
         <div class="poster-col">
           <div class="poster">
-            <img src={`${baseUrl}assets/${nextMeetup.img}`} alt="밋업 포스터" />
+            <img
+              src={`${baseUrl}assets/${posterImage}`}
+              alt="밋업 포스터"
+              width="840"
+              height="1187"
+              fetchpriority="high"
+            />
           </div>
         </div>
 
@@ -115,14 +113,7 @@
     <div class="subscribe-card">
       <div class="subscribe-title">
         <h2>
-          <span
-            class="badge"
-            class:rotate={isBadgeVisible}
-            bind:this={badgeElement}
-            aria-hidden="true"
-          >
-            <span class="badge-icon">✷</span>
-          </span>
+          <span class="badge" aria-hidden="true"><EyeIcon /></span>
           새로운 밋업 소식을 받아보세요!
         </h2>
       </div>
@@ -188,11 +179,8 @@
     display: inline-block;
     animation: voda-spin-3 2.4s cubic-bezier(0.4, 0, 0.2, 1) both;
   }
-  .s1 {
-    animation-delay: 0.3s;
-  }
   .s2 {
-    animation-delay: 3s;
+    animation-delay: 2.7s;
     color: #111;
   }
   @keyframes voda-spin-3 {
@@ -387,36 +375,12 @@
     align-items: center;
     /* justify-content: center; */
     font-family: "Archivo", sans-serif;
-    font-size: 52px;
+    font-size: 41.6px;
     line-height: 1;
-  }
-  .badge-icon {
-    display: block;
-    width: 1em;
-    height: 1em;
-    line-height: 1em;
-    text-align: center;
-    transform-origin: 50% 50%;
-  }
-  .badge.rotate .badge-icon {
-    animation: badge-spin 5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  @keyframes badge-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .badge.rotate .badge-icon {
-      animation: none;
-    }
   }
   @media (max-width: 780px) {
     .badge {
-      font-size: 40px;
+      font-size: 32px;
     }
   }
   .subscribe-title {
