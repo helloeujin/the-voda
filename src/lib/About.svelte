@@ -10,9 +10,11 @@
   <main>
     <section class="intro">
       <h1>
-        <span class="grey">The VoDa는</span> 다양한 배경의 운영진이 함께
-        이끌어가는 데이터 시각화 커뮤니티입니다.<br />
         <span class="spin" aria-hidden="true">✦</span>
+        <!-- <span class="grey">The VoDa는</span>  -->
+        다양한 배경의 운영진이 함께 이끌어가는 데이터 시각화 커뮤니티입니다.<br
+        />
+
         <span class="grey">
           더 많은 사람들이 데이터 시각화를 배우고 교류할 수 있는 열린 커뮤니티를
           만들어가고 있습니다.
