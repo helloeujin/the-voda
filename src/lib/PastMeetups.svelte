@@ -42,8 +42,12 @@
     </h1>
     <img
       class="collage"
-      src={`${baseUrl}assets/past-meetups-collage.png`}
+      src={`${baseUrl}assets/past-meetups-collage.webp`}
       alt="지난 밋업 현장"
+      width="2000"
+      height="1118"
+      decoding="async"
+      fetchpriority="high"
     />
   </section>
 
