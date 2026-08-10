@@ -154,7 +154,7 @@
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(1080deg);
+      transform: rotate(360deg);
     }
   }
 
