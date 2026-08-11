@@ -355,12 +355,14 @@
   .subscribe-card {
     /* border: 1px solid #111;  */
     /* background-color: #f7f7f7; */
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: clamp(28px, 4vw, 44px) clamp(28px, 4vw, 56px);
     display: flex;
     flex-wrap: wrap;
     gap: clamp(6px, 1.6vw, 8px);
     align-items: center;
+    /* border-top: 1px solid #111;
+    border-bottom: 1px solid #111; */
 
     @media (max-width: 780px) {
       padding: 5px 0px;

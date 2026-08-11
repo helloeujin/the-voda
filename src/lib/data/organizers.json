@@ -1,17 +1,17 @@
 [
   {
-    "name": "신유진",
-    "work": "VisualPlot",
-    "role": "데이터 시각화 전문가",
-    "quote": "데이터를 더 쉽고 즐겁게 이야기하는 자리를 함께 만듭니다.",
-    "link": "https://www.youjin.info/"
-  },
-  {
     "name": "김지연",
     "work": "뉴스타파",
     "role": "데이터 기자",
     "quote": "서로 다른 시선이 만나 새로운 시각화를 만든다고 믿습니다.",
     "link": "https://brunch.co.kr/@jiyeonwrites?tab=info"
+  },
+  {
+    "name": "신유진",
+    "work": "VisualPlot",
+    "role": "데이터 시각화 전문가",
+    "quote": "데이터를 더 쉽고 즐겁게 이야기하는 자리를 함께 만듭니다.",
+    "link": "https://www.youjin.info/"
   },
   {
     "name": "이수민",
