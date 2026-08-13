@@ -124,7 +124,7 @@
     margin: 6px 0 0;
     color: currentColor;
     font-family: "Archivo", "Noto Sans KR", sans-serif;
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: clamp(14px, 1.5vw, 15px);
     line-height: 1.35;
   }
 
