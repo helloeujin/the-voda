@@ -112,6 +112,7 @@ export async function fetchMeetupData() {
 
   return {
     upcoming: meetups.find((meetup) => meetup.type === "upcoming") ?? null,
+    latest: meetups[0] ?? null,
     past: meetups.filter((meetup) => meetup.type !== "upcoming"),
   };
 }

@@ -1,6 +1,6 @@
 export const upcomingMeetup = {
   meetup: 13,
-  type: "upcoming",
+  type: "offline",
   link: "",
   img: "poster-13.jpg",
   date: "2026.09.01 (화)",
