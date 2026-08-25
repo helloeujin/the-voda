@@ -142,15 +142,10 @@
           새로운 밋업 소식을 받아보세요!
         </h2>
       </div>
-      <a
-        class="subscribe-button"
-        href="https://page.stibee.com/subscriptions/508142"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <button class="subscribe-button" disabled>
         무료로 구독하기
         <span aria-hidden="true">→</span>
-      </a>
+      </button>
     </div>
   </section>
 
@@ -503,9 +498,14 @@
       font-size: 16px;
     }
   }
-  .subscribe-button:hover {
+  .subscribe-button:hover:not(:disabled) {
     background: #111;
     color: #fff;
+  }
+  .subscribe-button:disabled {
+    border-color: #aaa;
+    color: #888;
+    cursor: not-allowed;
   }
   .subscribe-button span {
     font-size: 20px;
