@@ -3,6 +3,7 @@
   import SiteHeader from "./SiteHeader.svelte";
   import SiteFooter from "./SiteFooter.svelte";
   import EyeIcon from "./EyeIcon.svelte";
+  import { latestMeetup } from "./data/latestMeetup.generated.js";
   import { fetchMeetupData } from "./data/googleSheet.js";
 
   const baseUrl = import.meta.env.BASE_URL;
@@ -11,8 +12,7 @@
 
   const instagramUrl = $derived(`https://instagram.com/${instagramHandle}`);
 
-  let nextMeetup = $state(null);
-  let meetupLoaded = $state(false);
+  let nextMeetup = $state(latestMeetup);
   const posterImage = $derived(
     nextMeetup?.img === "poster-13.jpg" ? "poster-13.webp" : nextMeetup?.img,
   );
@@ -24,8 +24,6 @@
         if (upcoming || latest) nextMeetup = upcoming ?? latest;
       } catch (error) {
         console.warn("Google Sheet의 밋업 정보를 불러오지 못했습니다.", error);
-      } finally {
-        meetupLoaded = true;
       }
     }
 
@@ -58,26 +56,7 @@
 
   <!-- 밋업 소식 -->
   <section id="news" class="news">
-    {#if !meetupLoaded}
-      <div class="news-card skeleton" aria-label="밋업 정보를 불러오는 중">
-        <div class="poster-col">
-          <div class="poster skeleton-block"></div>
-        </div>
-        <div class="news-body" aria-hidden="true">
-          <div class="skeleton-line short"></div>
-          <div class="skeleton-line title"></div>
-          <div class="skeleton-meta">
-            <div class="skeleton-line label"></div>
-            <div class="skeleton-line value"></div>
-            <div class="skeleton-line label"></div>
-            <div class="skeleton-line value"></div>
-            <div class="skeleton-line label"></div>
-            <div class="skeleton-line value"></div>
-          </div>
-          <div class="skeleton-button"></div>
-        </div>
-      </div>
-    {:else if nextMeetup}
+    {#if nextMeetup}
       <div class="news-card">
         <div class="poster-col">
           <div class="poster">
@@ -246,55 +225,6 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-  .skeleton-block,
-  .skeleton-line,
-  .skeleton-button {
-    background: rgba(255, 255, 255, 0.55);
-    animation: skeleton-pulse 1.2s ease-in-out infinite alternate;
-  }
-  .skeleton-line {
-    height: 16px;
-    border-radius: 8px;
-  }
-  .skeleton-line.short {
-    width: 34%;
-    margin-bottom: 18px;
-  }
-  .skeleton-line.title {
-    width: 72%;
-    height: 42px;
-    margin-bottom: 24px;
-  }
-  .skeleton-meta {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: 12px 20px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(17, 17, 17, 0.15);
-  }
-  .skeleton-line.label {
-    width: 48px;
-  }
-  .skeleton-line.value {
-    width: min(240px, 80%);
-  }
-  .skeleton-button {
-    width: 190px;
-    height: 50px;
-    margin-top: 32px;
-    border-radius: 100px;
-  }
-  @keyframes skeleton-pulse {
-    from { opacity: 0.45; }
-    to { opacity: 0.9; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .skeleton-block,
-    .skeleton-line,
-    .skeleton-button {
-      animation: none;
-    }
   }
   .news-body {
     flex: 1 1 380px;
