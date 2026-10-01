@@ -13,9 +13,6 @@
   const instagramUrl = $derived(`https://instagram.com/${instagramHandle}`);
 
   let nextMeetup = $state(latestMeetup);
-  const posterImage = $derived(
-    nextMeetup?.img === "poster-13.jpg" ? "poster-13.webp" : nextMeetup?.img,
-  );
 
   onMount(() => {
     async function refreshMeetup() {
@@ -61,7 +58,7 @@
         <div class="poster-col">
           <div class="poster">
             <img
-              src={`${baseUrl}assets/${posterImage}`}
+              src={`${baseUrl}assets/${nextMeetup.img}`}
               alt="밋업 포스터"
               width="840"
               height="1187"
@@ -206,8 +203,10 @@
     gap: clamp(24px, 4vw, 48px);
     align-items: stretch;
     /* background-color: #f7f7f7; */
-    background-color: #daf1e7;
+    /* background-color: #daf1e7; */
     /* background-color: #D8D9FF; */
+    background-color: #fff;
+    border: 1.5px solid #333;
   }
   .poster-col {
     flex: 1 1 280px;
