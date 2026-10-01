@@ -119,7 +119,7 @@
         </h2>
       </div>
       <button class="subscribe-button" disabled>
-        무료로 구독하기
+        뉴스레터 구독하기
         <span aria-hidden="true">→</span>
       </button>
     </div>
@@ -273,8 +273,10 @@
     margin-bottom: 10px;
     padding: 14px 28px;
     border-radius: 100px;
-    border: 1.5px solid #111;
-    background: rgba(0, 0, 0, 0);
+    border: 2px solid #111;
+    /* background: #4da619; */
+    /* background: rgba(77, 166, 25, 0.32); */
+    /* background: #eee; */
     color: #111;
     font-weight: 600;
     font-size: 17px;

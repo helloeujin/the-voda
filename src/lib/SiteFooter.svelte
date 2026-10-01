@@ -54,7 +54,7 @@
     margin-top: clamp(30px, 3vw, 40px);
     padding: 40px clamp(20px, 5vw, 65px) clamp(45px, 5vw, 65px);
     /* padding: 50px 60px 80px; */
-    background-color: #f7f7f7;
+    background-color: #f1f1f1;
     /* border-top: 1px solid #111; */
   }
   .inner {
